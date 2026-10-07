@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>S7VEN | Agência de Publicidade e Comunicação</title>
+<meta name="description" content="S7VEN — agência de publicidade, comunicação e produção. Onde a intuição encontra a estratégia.">
+<meta name="theme-color" content="#070707">
+<script>
+document.documentElement.classList.add('js');
+// se algum script falhar, mostra tudo em vez de deixar a página vazia
+addEventListener('error',()=>{document.documentElement.classList.remove('js');document.body&&document.body.classList.add('ready')});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,500&family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070707; --bg2:#0e0e0f; --line:#1f1f22; --txt:#f2efea; --mut:#8d8a86;
+  --red:#e0102f; --red2:#8a0a1e; --pink:#ff4f7b;
+  --serif:'Cormorant Garamond',serif; --sans:'Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+button{-webkit-tap-highlight-color:transparent}
+::selection{background:var(--red);color:#fff}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* grão sutil */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* preloader */
+html:not(.js) #loader{display:none}
+html:not(.js) .af{opacity:1;color:var(--red)}
+html:not(.js) .hud{opacity:1}
+html:not(.js) .line>span,html:not(.js) .hero p.lead,html:not(.js) .hero .cta,html:not(.js) .seven img{opacity:1;transform:none;scale:1;filter:none}
+#loader{position:fixed;inset:0;background:#000;z-index:100;display:grid;place-items:center;transition:clip-path 1s var(--ease) .1s;clip-path:inset(0 0 0 0)}
+#loader.done{clip-path:inset(0 0 100% 0)}
+#loader .s7{width:96px;opacity:0;scale:.85;animation:ldIn 1s var(--ease) .1s forwards}
+@keyframes ldIn{to{opacity:1;scale:1}}
+
+/* o 7: recorta a área do número na imagem quadrada; o preto some com "screen" */
+.s7{position:relative;aspect-ratio:760/890}
+.s7 img{position:absolute;width:210.8%;max-width:none;height:auto;left:-57.9%;top:-40.4%;mix-blend-mode:screen;pointer-events:none;user-select:none;
+  -webkit-mask-image:radial-gradient(closest-side circle at 51% 50%,#000 62%,transparent 94%);mask-image:radial-gradient(closest-side circle at 51% 50%,#000 62%,transparent 94%)}
+
+/* progresso */
+#bar{position:fixed;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,var(--red2),var(--red),var(--pink));transform-origin:0 50%;transform:scaleX(0);z-index:60}
+
+/* cursor */
+.cursor{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid rgba(255,255,255,.5);border-radius:50%;pointer-events:none;z-index:80;transform:translate(-50%,-50%);transition:width .35s var(--ease),height .35s var(--ease),background .35s,border-color .35s;mix-blend-mode:difference}
+.cursor.big{width:80px;height:80px;background:#fff;border-color:#fff}
+@media (hover:none){.cursor{display:none}}
+
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,backdrop-filter .4s,padding .4s;padding:22px 0}
+header.solid{background:rgba(7,7,7,.72);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:14px 0;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:1.7rem;letter-spacing:.18em;font-weight:500}
+.logo b{color:var(--red);font-weight:500}
+.nav ul{display:flex;gap:34px;list-style:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+.nav ul a{position:relative;color:var(--mut);transition:color .3s}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav ul a:hover{color:var(--txt)}
+.nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border:1px solid rgba(255,255,255,.18);border-radius:100px;font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate;transition:border-color .4s,color .4s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--red);border-radius:inherit;transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1}
+.btn:hover{border-color:var(--red)}
+.btn:hover::before{transform:translateY(0)}
+.btn.fill{background:var(--red);border-color:var(--red)}
+.btn.fill::before{background:#fff}
+.btn.fill:hover{color:#000}
+.btn svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(4px) rotate(-45deg)}
+.burger{display:none;background:none;border:0;width:30px;height:20px;position:relative;cursor:pointer}
+.burger span{position:absolute;left:0;width:100%;height:1.5px;background:#fff;transition:.4s var(--ease)}
+.burger span:nth-child(1){top:4px}.burger span:nth-child(2){bottom:4px}
+.menu-open .burger span:nth-child(1){top:9px;transform:rotate(45deg)}
+.menu-open .burger span:nth-child(2){bottom:9px;transform:rotate(-45deg)}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:grid;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
+.glow{position:absolute;width:60vmax;height:60vmax;border-radius:50%;background:radial-gradient(circle,rgba(224,16,47,.28),transparent 62%);filter:blur(30px);top:50%;left:62%;transform:translate(-50%,-50%);animation:breathe 7s ease-in-out infinite;pointer-events:none}
+@keyframes breathe{50%{transform:translate(-48%,-52%) scale(1.12);opacity:.7}}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px;position:relative}
+.eyebrow{font-size:.75rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--red)}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.9rem,6.4vw,5.8rem);line-height:.98;letter-spacing:-.02em;margin:26px 0 30px}
+h1 em{font-style:italic;color:var(--red)}
+.line{display:block;overflow:hidden;padding-bottom:.06em}
+.line>span{display:inline-block;transform:translateY(110%);transition:transform 1.2s var(--ease)}
+.ready .line>span{transform:none}
+.ready .line:nth-child(2)>span{transition-delay:.12s}
+.ready .line:nth-child(3)>span{transition-delay:.24s}
+.hero p.lead{max-width:440px;color:var(--mut);font-size:1.05rem;opacity:0;transform:translateY(20px);transition:1s var(--ease) .5s}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px;opacity:0;transform:translateY(20px);transition:1s var(--ease) .65s}
+.ready .hero p.lead,.ready .hero .cta{opacity:1;transform:none}
+.seven{position:relative;justify-self:center;width:min(24rem,70vw)}
+/* sem transform/opacity no container: o blend precisa enxergar o fundo da página */
+.seven img{opacity:0;scale:.9;filter:blur(16px);transition:opacity 1.6s var(--ease) .2s,scale 1.8s var(--ease) .2s,filter 1.5s cubic-bezier(.6,0,.2,1) 1.1s}
+.ready .seven img{opacity:1;scale:1;filter:none}
+.seven .float{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{translate:0 -14px;rotate:-1.5deg}}
+/* ====== efeitos de câmera ====== */
+
+/* flash do obturador quando o site abre */
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:101}
+#flash.go{animation:flash .9s cubic-bezier(.2,.7,.3,1)}
+@keyframes flash{0%{opacity:0}6%{opacity:.6}100%{opacity:0}}
+
+/* visor (HUD) da câmera no topo */
+.hud{position:absolute;inset:100px clamp(16px,3vw,40px) 26px;pointer-events:none;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,239,234,.5);font-variant-numeric:tabular-nums;opacity:0;transition:opacity 1.4s ease 1s}
+.ready .hud{opacity:1}
+.hud .c{position:absolute;width:26px;height:26px;border:0 solid rgba(255,255,255,.32)}
+.hud .c1{top:0;left:0;border-width:1px 0 0 1px}.hud .c2{top:0;right:0;border-width:1px 1px 0 0}
+.hud .c3{bottom:0;left:0;border-width:0 0 1px 1px}.hud .c4{bottom:0;right:0;border-width:0 1px 1px 0}
+.hud .row{position:absolute;display:flex;align-items:center;gap:18px;white-space:nowrap}
+.hud .tl{top:6px;left:40px}.hud .tr{top:6px;right:40px}
+.hud .bl{bottom:6px;left:40px}.hud .br{bottom:6px;right:40px}
+.rec{color:var(--txt);display:inline-flex;align-items:center;gap:8px}
+.rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.bat{width:21px;height:10px;border:1px solid currentColor;border-radius:2px;position:relative;padding:1px}
+.bat::before{content:"";display:block;height:100%;width:72%;background:currentColor}
+.bat::after{content:"";position:absolute;right:-4px;top:2px;width:2px;height:4px;background:currentColor}
+
+/* foco automático "procurando" o 7 */
+.af{position:absolute;left:4%;right:4%;top:2%;bottom:0;pointer-events:none;color:rgba(255,255,255,.75);opacity:0;
+  background:
+    linear-gradient(currentColor,currentColor) top left/22px 1px,linear-gradient(currentColor,currentColor) top left/1px 22px,
+    linear-gradient(currentColor,currentColor) top right/22px 1px,linear-gradient(currentColor,currentColor) top right/1px 22px,
+    linear-gradient(currentColor,currentColor) bottom left/22px 1px,linear-gradient(currentColor,currentColor) bottom left/1px 22px,
+    linear-gradient(currentColor,currentColor) bottom right/22px 1px,linear-gradient(currentColor,currentColor) bottom right/1px 22px;
+  background-repeat:no-repeat}
+.af::before{content:"";position:absolute;left:50%;top:50%;width:12px;height:12px;translate:-50% -50%;
+  background:linear-gradient(currentColor,currentColor) center/12px 1px no-repeat,linear-gradient(currentColor,currentColor) center/1px 12px no-repeat;opacity:.6}
+.af::after{content:"AF-S  ●  FOCO";position:absolute;left:0;top:-22px;font-size:.6rem;letter-spacing:.22em;white-space:nowrap;opacity:0}
+.ready .af{animation:afHunt 1.7s var(--ease) 1.1s forwards}
+.ready .af::after{animation:afLabel .5s ease 2.7s forwards}
+@keyframes afHunt{0%{opacity:0;scale:1.4}30%{opacity:1;scale:.9}50%{scale:1.06}68%{scale:.97}85%{color:rgba(255,255,255,.75)}100%{opacity:1;scale:1;color:var(--red)}}
+@keyframes afLabel{to{opacity:1}}
+
+/* película de filme rolando */
+.film-wrap{overflow:hidden;padding:40px 0;margin:-40px 0 clamp(50px,8vw,110px)}
+.film{position:relative;width:112%;margin-left:-6%;rotate:-2deg;background:#0b0b0c;border-block:1px solid var(--line);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.film-track{display:flex;width:max-content;position:relative;padding:26px 0;animation:roll 45s linear infinite}
+.film:hover .film-track{animation-play-state:paused}
+.film-track::before,.film-track::after{content:"";position:absolute;left:0;right:0;height:9px;background:repeating-linear-gradient(90deg,transparent 0 9px,rgba(255,255,255,.13) 9px 21px,transparent 21px 30px)}
+.film-track::before{top:8px}.film-track::after{bottom:8px}
+.fr{display:flex;align-items:center;gap:16px;padding:0 38px;height:clamp(64px,8vw,104px);border-right:1px solid rgba(255,255,255,.08);font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.7rem);font-weight:300;white-space:nowrap;letter-spacing:-.01em}
+.fr:nth-child(even){font-style:italic;color:var(--red)}
+.fr b{font-family:var(--sans);font-size:.58rem;font-weight:600;letter-spacing:.22em;color:var(--mut);font-style:normal}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* visor nos cards de projetos */
+.card>.vf{position:absolute;inset:12px;pointer-events:none;color:rgba(255,255,255,.5);opacity:0;scale:1.05;transition:opacity .4s,scale .6s var(--ease);
+  background:
+    linear-gradient(currentColor,currentColor) top left/16px 1px,linear-gradient(currentColor,currentColor) top left/1px 16px,
+    linear-gradient(currentColor,currentColor) top right/16px 1px,linear-gradient(currentColor,currentColor) top right/1px 16px,
+    linear-gradient(currentColor,currentColor) bottom left/16px 1px,linear-gradient(currentColor,currentColor) bottom left/1px 16px,
+    linear-gradient(currentColor,currentColor) bottom right/16px 1px,linear-gradient(currentColor,currentColor) bottom right/1px 16px;
+  background-repeat:no-repeat}
+.card>.vf::after{content:attr(data-f);position:absolute;top:10px;right:14px;font-size:.58rem;letter-spacing:.22em;color:var(--mut)}
+.card:hover>.vf{opacity:1;scale:1}
+
+/* faixas de cinema (letterbox) na história */
+.lb{position:absolute;left:0;right:0;height:var(--lb,0px);background:#000;z-index:1;pointer-events:none;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(242,239,234,.38);overflow:hidden;white-space:nowrap}
+.lb.t{top:0;border-bottom:1px solid rgba(255,255,255,.05)}
+.lb.b{bottom:0;border-top:1px solid rgba(255,255,255,.05)}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-hint i{width:1px;height:46px;background:linear-gradient(var(--red),transparent);animation:drip 2s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+section{padding:clamp(90px,14vw,170px) 0}
+.tag{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:22px;display:block}
+h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.3rem,5.4vw,4.4rem);line-height:1.02;letter-spacing:-.015em}
+h2 em{font-style:italic;color:var(--red)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(40px)}
+.rv{transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* manifesto */
+.manifest{font-family:var(--serif);font-size:clamp(2rem,5.6vw,4.6rem);line-height:1.12;font-weight:300;max-width:1000px}
+.manifest .w{color:#2a2a2c;transition:color .5s}
+.manifest .w.on{color:var(--txt)}
+.manifest .w.on.r{color:var(--red);font-style:italic}
+.mf-foot{margin-top:50px;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:var(--mut);max-width:1000px}
+.mf-foot p{max-width:430px}
+
+/* serviços */
+.sv-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:60px}
+.sv-head p{max-width:360px;color:var(--mut)}
+.sv{border-top:1px solid var(--line)}
+.sv-item{display:grid;grid-template-columns:80px 1fr 1fr 40px;gap:20px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line);position:relative;cursor:default;overflow:hidden}
+.sv-item::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(224,16,47,.14),transparent 70%);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.sv-item:hover::before{transform:scaleX(1)}
+.sv-item>*{position:relative}
+.sv-n{font-size:.8rem;color:var(--mut);letter-spacing:.1em}
+.sv-t{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.5rem);font-weight:300;line-height:1.1;transition:transform .6s var(--ease),color .4s}
+.sv-item:hover .sv-t{transform:translateX(14px);color:#fff}
+.sv-d{color:var(--mut);font-size:.95rem}
+.sv-a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.5s var(--ease)}
+.sv-a svg{width:14px;transition:transform .5s var(--ease)}
+.sv-item:hover .sv-a{background:var(--red);border-color:var(--red)}
+.sv-item:hover .sv-a svg{transform:rotate(-45deg)}
+
+/* jornada */
+.journey{background:var(--bg2);border-block:1px solid var(--line)}
+.jr-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.jr-list{list-style:none;font-family:var(--sans);font-weight:800;font-size:clamp(2rem,5vw,3.9rem);line-height:1.08;letter-spacing:-.03em}
+.jr-list li{display:flex;gap:.25em;opacity:.18;transition:opacity .6s,transform .6s var(--ease);transform:translateX(-10px)}
+.jr-list li.act{opacity:1;transform:none}
+.jr-list li span{color:var(--red);position:relative;overflow:hidden;display:inline-block}
+.jr-list li span i{display:inline-block;font-style:normal;transform:translateY(105%);transition:transform .7s var(--ease)}
+.jr-list li.act span i{transform:none}
+.jr-txt p{color:var(--mut);margin-top:22px;max-width:440px}
+.jr-txt p strong{color:var(--txt);font-weight:600}
+
+/* parcerias */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.card{border:1px solid var(--line);border-radius:22px;padding:34px 30px;position:relative;overflow:hidden;background:var(--bg2);min-height:270px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .5s,transform .6s var(--ease)}
+.card::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(224,16,47,.25),transparent 65%);left:var(--mx,50%);top:var(--my,50%);transform:translate(-50%,-50%);opacity:0;transition:opacity .4s;pointer-events:none}
+.card:hover{border-color:rgba(224,16,47,.45);transform:translateY(-6px)}
+.card:hover::before{opacity:1}
+.card>*{position:relative}
+.card small{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--red)}
+.card h3{font-family:var(--serif);font-weight:500;font-size:1.9rem;line-height:1.1;margin:14px 0 10px}
+.card p{color:var(--mut);font-size:.93rem}
+.brands{margin-top:70px;display:flex;flex-wrap:wrap;gap:12px}
+.brands span{border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-size:.85rem;color:var(--mut);transition:.4s var(--ease)}
+.brands span:hover{color:#fff;border-color:var(--red);transform:translateY(-3px)}
+
+/* história */
+.story{text-align:center;position:relative;overflow:hidden}
+.big7{position:absolute;font-family:var(--serif);font-size:clamp(28rem,60vw,48rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(224,16,47,.13);left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;font-weight:300}
+.story blockquote{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(2rem,5vw,4.2rem);line-height:1.1;max-width:960px;margin:0 auto;position:relative}
+.story blockquote b{font-weight:500;color:var(--red)}
+.story p{color:var(--mut);max-width:620px;margin:36px auto 0;position:relative}
+
+/* endereço */
+.loc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:stretch;margin-top:60px}
+.info{display:flex;flex-direction:column;gap:30px}
+.info-row{border-top:1px solid var(--line);padding-top:22px}
+.info-row small{display:block;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.info-row div{font-family:var(--serif);font-size:1.6rem;line-height:1.25}
+.info-row div.ph{color:#77736f}
+.map{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);min-height:420px;background:var(--bg2)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9) brightness(.85);transition:filter .8s}
+.map:hover iframe{filter:grayscale(.2) invert(0) contrast(1)}
+.pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);z-index:2;pointer-events:none}
+.pin i{display:block;width:18px;height:18px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(224,16,47,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 26px rgba(224,16,47,0)}100%{box-shadow:0 0 0 0 rgba(224,16,47,0)}}
+.map .badge{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(7,7,7,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:100px;padding:10px 18px;font-size:.78rem;letter-spacing:.06em}
+
+/* cta final */
+.final{text-align:center;padding-bottom:120px}
+.final h2{font-size:clamp(2.8rem,8vw,7rem);line-height:.95}
+.final .btn{margin-top:46px}
+
+/* assinatura: logo no fundo da página */
+.signature{position:relative;overflow:hidden;padding:clamp(20px,4vw,50px) 0 clamp(30px,5vw,60px)}
+.signature::before{content:"";position:absolute;left:50%;top:55%;width:70%;height:60%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(224,16,47,.16),transparent 65%);filter:blur(40px);pointer-events:none}
+.sig-logo{position:relative;width:min(1180px,100% - 40px);margin-inline:auto;aspect-ratio:3/1;transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+/* em repouso sem opacity/transform: assim o blend "screen" funde o preto da imagem com o fundo */
+.js .sig-logo:not(.in){opacity:0;transform:translateY(50px)}
+.sig-logo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 47%;mix-blend-mode:screen;transform:translateY(var(--sy,0px)) scale(1.04);transition:transform .2s linear;
+  -webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:.82rem;color:var(--mut)}
+.ft{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.ft a:hover{color:var(--red)}
+
+.m-only{display:none}
+
+/* telas grandes: aproveita mais a largura */
+@media (min-width:1600px){
+  html{font-size:112.5%}
+  .wrap{width:min(1360px,100% - 80px)}
+}
+@media (min-width:2200px){
+  html{font-size:125%}
+  .wrap{width:min(1560px,100% - 120px)}
+}
+
+/* notebooks e tablets deitados (901–1180px) */
+@media (min-width:901px) and (max-width:1180px){
+  .nav ul{gap:24px}
+  .hero-grid{grid-template-columns:1.3fr .7fr;gap:30px}
+  h1{font-size:clamp(3rem,6vw,4.6rem)}
+  .seven{width:min(300px,28vw)}
+  .sv-item{grid-template-columns:60px 1fr 1fr 40px}
+  .cards{gap:14px}
+  .card{padding:28px 24px}
+}
+
+/* mobile */
+@media (max-width:900px){
+  .wrap{width:calc(100% - 40px)}
+  .nav>.btn{display:none}
+  .nav ul{display:none}
+  .burger{display:block;width:44px;height:44px;margin-right:-8px}
+  .burger span{left:8px;width:28px}
+  .burger span:nth-child(1){top:17px}.burger span:nth-child(2){bottom:17px}
+  .menu-open .burger span:nth-child(1){top:21px}
+  .menu-open .burger span:nth-child(2){bottom:21px}
+  /* backdrop-filter prenderia o menu fixo dentro do header */
+  .menu-open header{backdrop-filter:none;-webkit-backdrop-filter:none;background:transparent;border-color:transparent}
+  .menu-open{overflow:hidden}
+  .menu-open .nav ul{display:flex;position:fixed;inset:0;height:100vh;height:100dvh;overflow-y:auto;padding:80px 20px 40px;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;gap:26px;z-index:-1;font-family:var(--serif);font-size:2.2rem;letter-spacing:.02em;text-transform:none;animation:menuIn .5s var(--ease)}
+  .menu-open .nav ul a{color:var(--txt);padding:6px 14px}
+  .menu-open .nav ul a::after{display:none}
+  .nav ul .m-only{display:block;margin-top:14px}
+  .nav ul .m-only .btn{font-family:var(--sans);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;padding:16px 30px}
+  @keyframes menuIn{from{opacity:0;transform:translateY(-12px)}}
+
+  .hero{padding:96px 0 60px;min-height:auto}
+  .hero-grid{gap:18px}
+  .hero-grid,.jr-grid,.loc-grid{grid-template-columns:1fr}
+  .seven{order:-1;width:min(200px,52vw);margin-bottom:0}
+  .glow{left:50%;top:26%;width:120vw;height:120vw;filter:none}
+  h1{font-size:clamp(2.35rem,11vw,3.4rem);margin:20px 0 22px}
+  .eyebrow{font-size:.66rem;letter-spacing:.2em;gap:10px}
+  .eyebrow::before{width:22px}
+  .hero p.lead{font-size:1rem}
+  .hero .cta{flex-direction:column;align-items:stretch;margin-top:30px}
+  .hero .cta .btn{justify-content:center;padding:16px 24px}
+
+  section{padding:80px 0}
+  .manifest{font-size:clamp(1.8rem,8.4vw,2.6rem)}
+  .mf-foot{margin-top:34px;gap:18px}
+  .sv-head{margin-bottom:36px}
+  .sv-item{grid-template-columns:34px 1fr 34px;gap:14px;padding:24px 0}
+  .sv-t{font-size:1.45rem}
+  .sv-a{width:34px;height:34px}
+  .sv-d{grid-column:2/4;grid-row:2;margin-top:-6px;font-size:.92rem}
+  .jr-grid{gap:44px}
+  .jr-txt{order:-1}
+  .jr-list{font-size:clamp(1.75rem,9vw,2.6rem)}
+  .jr-list li{flex-wrap:wrap}
+  .cards{grid-template-columns:1fr;margin-top:40px;gap:14px}
+  .card{min-height:0;padding:28px 24px;gap:18px}
+  .card h3{font-size:1.65rem}
+  .brands{margin-top:40px;gap:8px}
+  .brands span{padding:9px 16px;font-size:.8rem}
+  .big7{font-size:26rem}
+  .story blockquote{font-size:clamp(1.8rem,8vw,2.6rem)}
+  .loc-grid{margin-top:40px;gap:34px}
+  .info{gap:22px}
+  .info-row div{font-size:1.4rem}
+  .map{min-height:300px;border-radius:18px}
+  .final{padding-bottom:70px}
+  .final h2{font-size:clamp(2.6rem,12vw,4rem)}
+  .final .btn{margin-top:34px;padding:16px 28px}
+  .scroll-hint{display:none}
+  .hero{padding-top:118px}
+  .hud{inset:78px 12px 14px;font-size:.56rem;letter-spacing:.14em}
+  .hud .tl{left:30px;top:4px}.hud .tr{right:30px;top:4px}
+  .hud .bl,.hud .br,.hud .hide-m{display:none}
+  .hud .c{width:18px;height:18px}
+  .af::after{top:-18px;font-size:.52rem}
+  .film-wrap{margin-bottom:40px}
+  .film-track{padding:22px 0;animation-duration:32s}
+  .fr{padding:0 24px;gap:12px}
+
+  .signature{padding:0 0 24px}
+  .signature::before{width:110%;filter:none}
+  .sig-logo{width:calc(100% - 24px);aspect-ratio:2.4/1}
+  .sig-logo img{object-position:50% 48%}
+
+  .ft{flex-direction:column;text-align:center;gap:12px}
+  footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
+}
+
+/* tablets em pé e celulares grandes deitados (601–900px) */
+@media (min-width:601px) and (max-width:900px){
+  .wrap{width:calc(100% - 64px)}
+  .hero-grid>div:first-child{text-align:center}
+  .eyebrow{justify-content:center}
+  h1{font-size:clamp(3.4rem,8.6vw,4.4rem)}
+  .hero .cta{flex-direction:row;align-items:center;justify-content:center}
+  .hero p.lead{max-width:520px;margin-inline:auto}
+  .seven{width:min(240px,34vw)}
+  .cards{grid-template-columns:1fr 1fr}
+  .cards .card:last-child{grid-column:1/-1}
+  .loc-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .info-row div{font-size:1.25rem}
+  .sig-logo{width:calc(100% - 64px);aspect-ratio:3/1}
+}
+
+/* telas baixas: celular deitado */
+@media (max-height:520px) and (orientation:landscape){
+  .hero{min-height:auto;padding:90px 0 50px}
+  .scroll-hint{display:none}
+  .seven{width:min(170px,22vw)}
+  h1{font-size:clamp(2rem,7vw,2.8rem)}
+  .menu-open .nav ul{justify-content:flex-start;gap:4px;font-size:1.45rem;padding:64px 20px 20px}
+  .menu-open .nav ul a{padding:4px 14px}
+  .nav ul .m-only{margin-top:6px}
+  .map{min-height:260px}
+  .hud{inset:70px 12px 12px}
+  .hud .bl,.hud .br{display:none}
+}
+@media (max-height:520px) and (orientation:landscape) and (min-width:601px) and (max-width:900px){
+  .hero-grid{grid-template-columns:1.4fr .6fr;gap:24px}
+  .seven{order:0}
+  h1{font-size:clamp(2.2rem,6vw,3rem)}
+  .hero-grid>div:first-child{text-align:left}
+  .eyebrow,.hero .cta{justify-content:flex-start}
+  .hero p.lead{margin-inline:0}
+}
+
+/* telas muito estreitas (dobráveis fechados, ~280px) */
+@media (max-width:340px){
+  .wrap{width:calc(100% - 28px)}
+  .logo{font-size:1.4rem}
+  h1{font-size:2.1rem}
+  .btn{padding:13px 18px;font-size:.76rem}
+  .sv-item{grid-template-columns:26px 1fr 30px;gap:10px}
+  .sv-t{font-size:1.3rem}
+  .jr-list{font-size:1.6rem}
+  .final h2{font-size:2.3rem}
+  .eyebrow{font-size:.58rem;letter-spacing:.12em}
+}
+
+/* em telas de toque, hover "gruda" depois do toque: desliga os deslocamentos */
+@media (hover:none){
+  .card:hover{transform:none;border-color:var(--line)}
+  .card:hover::before{opacity:0}
+  .sv-item:hover::before{transform:scaleX(0)}
+  .sv-item:hover .sv-t{transform:none}
+  .brands span:hover{transform:none}
+  .card>.vf{opacity:.6;scale:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.line>span,.hero p.lead,.hero .cta{opacity:1;transform:none}
+  .sig-logo{opacity:1;transform:none}
+  .seven img,#loader .s7{opacity:1;scale:1;filter:none}
+  .af{opacity:1;color:var(--red)}.af::after{opacity:1}
+  #flash{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="flash"></div>
+<div id="loader"><div class="s7"><img src="assets/seven.jpg" alt="" width="1602" height="1602" fetchpriority="high"></div></div>
+<div id="bar"></div>
+<div class="cursor"></div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#" class="logo">S<b>7</b>VEN</a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#endereco">Endereço</a></li>
+      <li class="m-only"><a href="https://ig.me/m/agencia.s7veen" target="_blank" rel="noopener" class="btn fill">Fale com a gente</a></li>
+    </ul>
+    <a href="https://ig.me/m/agencia.s7veen" target="_blank" rel="noopener" class="btn">Fale com a gente</a>
+    <button class="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="glow"></div>
+  <div class="hud" aria-hidden="true">
+    <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
+    <div class="row tl"><span class="rec">REC</span><span id="tc">00:00:00:00</span></div>
+    <div class="row tr"><span>4K<span class="hide-m"> · 24 FPS</span></span><span class="bat"></span></div>
+    <div class="row bl"><span>ISO 400</span><span>f/1.8</span><span>1/50</span><span>5600K</span></div>
+    <div class="row br"><span>CAM A · S7VEN</span></div>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Publicidade · Comunicação · Produção</span>
+      <h1>
+        <span class="line"><span>Onde a</span></span>
+        <span class="line"><span><em>intuição</em> encontra</span></span>
+        <span class="line"><span>a estratégia.</span></span>
+      </h1>
+      <p class="lead">Somos a S7VEN: um encontro de ideias, talentos e estratégias que transformam intuição em direção — para que a sua marca seja vista, sentida e lembrada.</p>
+      <div class="cta">
+        <a href="https://ig.me/m/agencia.s7veen" target="_blank" rel="noopener" class="btn fill mag">Quero me comunicar melhor
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#servicos" class="btn mag">O que fazemos</a>
+      </div>
+    </div>
+    <div class="seven">
+      <div class="af" aria-hidden="true"></div>
+      <div class="s7"><img src="assets/seven.jpg" alt="" class="float" width="1602" height="1602" fetchpriority="high"></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Role<i></i></div>
+</section>
+
+
+<section id="sobre">
+  <div class="wrap">
+    <span class="tag rv">Manifesto</span>
+    <p class="manifest" id="manifest">A Seven é pensamento. É <span class="r">estratégia.</span> É energia. É cultura. É posicionamento. É <span class="r">movimento.</span></p>
+    <div class="mf-foot">
+      <p class="rv">Toda marca tem uma história, uma essência e um propósito. O nosso papel é encontrar a melhor forma de fazer tudo isso ser visto, sentido e lembrado.</p>
+      <p class="rv d1">Olhar além do óbvio. Transformar ideias em possibilidades. Unir estratégia e intuição para criar algo que faça sentido.</p>
+    </div>
+  </div>
+</section>
+
+<div class="film-wrap"><div class="film" aria-hidden="true"><div class="film-track"><span class="fr"><b>01A</b>Produção de moda</span><span class="fr"><b>02A</b>Campanha</span><span class="fr"><b>03A</b>Captação</span><span class="fr"><b>04A</b>Identidade visual</span><span class="fr"><b>05A</b>Reels</span><span class="fr"><b>06A</b>Direção criativa</span><span class="fr"><b>07A</b>Eventos</span><span class="fr"><b>08A</b>Conteúdo</span><span class="fr"><b>01A</b>Produção de moda</span><span class="fr"><b>02A</b>Campanha</span><span class="fr"><b>03A</b>Captação</span><span class="fr"><b>04A</b>Identidade visual</span><span class="fr"><b>05A</b>Reels</span><span class="fr"><b>06A</b>Direção criativa</span><span class="fr"><b>07A</b>Eventos</span><span class="fr"><b>08A</b>Conteúdo</span></div></div></div>
+
+<section id="servicos" style="padding-top:0">
+  <div class="wrap">
+    <div class="sv-head">
+      <div><span class="tag rv">O que fazemos</span><h2 class="rv d1">Do conceito à<br><em>entrega final.</em></h2></div>
+      <p class="rv d2">Produção, conteúdo, identidade e estratégia — tudo pensado para que a sua marca comunique com propósito.</p>
+    </div>
+    <div class="sv">
+      <div class="sv-item rv"><span class="sv-n">01</span><h3 class="sv-t">Produção de moda</h3><p class="sv-d">Conceito, styling, direção criativa e produção visual que transformam coleções e produtos em narrativas.</p><span class="sv-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sv-item rv"><span class="sv-n">02</span><h3 class="sv-t">Identidade visual</h3><p class="sv-d">Marcas autênticas e estratégicas, com identidade completa — do conceito aos aplicativos.</p><span class="sv-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sv-item rv"><span class="sv-n">03</span><h3 class="sv-t">Criação e captação de conteúdo</h3><p class="sv-d">Produzimos e registramos conteúdos que traduzem a essência da sua marca, no momento certo.</p><span class="sv-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sv-item rv"><span class="sv-n">04</span><h3 class="sv-t">Conteúdo e campanha</h3><p class="sv-d">Foto e vídeo para campanhas, lançamentos e projetos que pedem uma comunicação visual consistente.</p><span class="sv-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sv-item rv"><span class="sv-n">05</span><h3 class="sv-t">Mentoria e consultoria</h3><p class="sv-d">Publicitária e administrativa: estruturar, planejar e executar eventos e estratégias com foco em resultado.</p><span class="sv-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      <div class="sv-item rv"><span class="sv-n">06</span><h3 class="sv-t">Mídia kit</h3><p class="sv-d">Da direção à apresentação final: imagem, identidade e informação reunidas para novas oportunidades.</p><span class="sv-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="journey">
+  <div class="wrap jr-grid">
+    <ul class="jr-list" id="jr">
+      <li>Reels <span><i>atrai.</i></span></li>
+      <li>Story <span><i>vende.</i></span></li>
+      <li>Carrossel <span><i>ensina.</i></span></li>
+      <li>Bio <span><i>identifica.</i></span></li>
+      <li>Destaque <span><i>resume.</i></span></li>
+    </ul>
+    <div class="jr-txt">
+      <span class="tag rv">Estratégia</span>
+      <h2 class="rv d1">Seu Instagram não é só um perfil. <em>É uma jornada.</em></h2>
+      <p class="rv d2">Cada elemento tem uma função. Quando todos trabalham juntos, o perfil deixa de ser apenas bonito e passa a <strong>comunicar, conectar e converter.</strong></p>
+      <p class="rv d3">Estratégia não é sobre postar mais. É sobre entender o que postar, por que postar e qual propósito cada conteúdo deve cumprir.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <span class="tag rv">Em movimento</span>
+    <h2 class="rv d1">Marcas, pessoas e experiências<br>que caminham <em>com a gente.</em></h2>
+    <div class="cards">
+      <article class="card rv"><span class="vf" data-f="FRAME 01/03" aria-hidden="true"></span><div><small>Evento · Camocim</small><h3>After Run — Camocim Night Run</h3></div><p>Ação pós-corrida com sorteios, ativações de marcas parceiras, degustações e música ao vivo. Porque a corrida não termina na linha de chegada.</p></article>
+      <article class="card rv d1"><span class="vf" data-f="FRAME 02/03" aria-hidden="true"></span><div><small>Ativação</small><h3>Ações com marcas parceiras</h3></div><p>Experiências presenciais pensadas para aproximar marcas do público — com estratégia, energia e muita conexão.</p></article>
+      <article class="card rv d2"><span class="vf" data-f="FRAME 03/03" aria-hidden="true"></span><div><small>Influência</small><h3>Embaixadoras e criadores</h3></div><p>Conectamos marcas a pessoas reais, que comunicam com verdade e colocam a mensagem em movimento.</p></article>
+    </div>
+    <div class="brands rv">
+      <span>Camocim Night Run</span><span>Rjotta Photo</span><span>Glow Maison</span><span>WO Suplementos</span><span>Hotel Riviera</span><span>+ marcas parceiras</span>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="lb t" aria-hidden="true"><span>Cena 07 — Nossa história</span><span>Take 01</span></div>
+  <div class="lb b" aria-hidden="true"><span>2.39 : 1</span><span>S7VEN Films</span></div>
+  <div class="big7" aria-hidden="true">7</div>
+  <div class="wrap">
+    <span class="tag rv">Nossa história</span>
+    <blockquote class="rv d1">“Se cairmos <b>7</b>, <b>8</b> ou quantas vezes forem necessárias, levantaremos todas elas.”</blockquote>
+    <p class="rv d2">A Seven nasceu de um pensamento feminino: a certeza de que somos capazes de construir tudo aquilo em que escolhemos acreditar. Novo perfil, o mesmo propósito — a mesma S7VEN.</p>
+  </div>
+</section>
+
+<section id="endereco" style="padding-top:0">
+  <div class="wrap">
+    <span class="tag rv">Onde estamos</span>
+    <h2 class="rv d1">Vem tomar um café<br>e <em>conversar sobre a sua marca.</em></h2>
+    <div class="loc-grid">
+      <div class="info">
+        <div class="info-row rv"><small>Endereço</small><div class="ph">Rua Exemplo, 000 — Centro<br>Camocim · CE</div></div>
+        <div class="info-row rv d1"><small>Atendimento</small><div>Segunda a sexta<br>08h às 18h</div></div>
+        <div class="info-row rv d2"><small>Instagram</small><div><a href="https://instagram.com/agencia.s7veen" target="_blank" rel="noopener">@agencia.s7veen</a></div></div>
+      </div>
+      <div class="map rv d1">
+        <iframe title="Mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Camocim,+Ceará&z=14&output=embed"></iframe>
+        <div class="pin"><i></i></div>
+        <span class="badge">✦ Localização em breve</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <span class="tag rv">Vamos juntos?</span>
+    <h2 class="rv d1">Entre estratégia<br>e intuição, <em>criamos.</em></h2>
+    <a href="https://ig.me/m/agencia.s7veen" target="_blank" rel="noopener" class="btn fill mag rv d2">Iniciar um projeto
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+</main>
+
+<div class="signature">
+  <div class="sig-logo" id="sig"><img src="assets/s7ven-logo.jpg" alt="S7VEN — Marketing & Comunicação" loading="lazy" width="1080" height="1080"></div>
+</div>
+
+<footer>
+  <div class="wrap ft">
+    <a href="#" class="logo" style="font-size:1.3rem">S<b>7</b>VEN</a>
+    <span>© <span id="y"></span> S7VEN · Publicidade, Comunicação e Produção</span>
+    <a href="https://instagram.com/agencia.s7veen" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+
+<script>
+(()=>{
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  $('#y').textContent=new Date().getFullYear();
+
+  // loader
+  let opened=false;
+  const open=()=>{if(opened)return;opened=true;$('#flash').classList.add('go');$('#loader').classList.add('done');document.body.classList.add('ready')};
+  addEventListener('load',()=>setTimeout(open,1100));
+  setTimeout(open,3500);
+
+  // timecode do visor (24 quadros/s), só roda com o topo visível
+  const tc=$('#tc'), t0=performance.now(); let heroVis=true;
+  new IntersectionObserver(([e])=>heroVis=e.isIntersecting).observe($('.hero'));
+  const pad=n=>String(n).padStart(2,'0');
+  setInterval(()=>{if(!heroVis||document.hidden)return;const f=Math.floor((performance.now()-t0)*.024);tc.textContent=pad(Math.floor(f/86400))+':'+pad(Math.floor(f/1440)%60)+':'+pad(Math.floor(f/24)%60)+':'+pad(f%24)},42);
+
+  // menu mobile
+  const burger=$('.burger');
+  const setMenu=open=>{document.body.classList.toggle('menu-open',open);burger.setAttribute('aria-expanded',open);burger.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')};
+  burger.onclick=()=>setMenu(!document.body.classList.contains('menu-open'));
+  $$('.nav ul a').forEach(a=>a.onclick=()=>setMenu(false));
+  addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+  matchMedia('(min-width:901px)').addEventListener('change',e=>{if(e.matches)setMenu(false)});
+
+  // manifesto: palavras acendem com o scroll
+  const m=$('#manifest');
+  m.innerHTML=m.innerHTML.replace(/<span class="r">(.*?)<\/span>|(\S+)/g,(x,r,w)=>r?`<span class="w r">${r}</span>`:`<span class="w">${w}</span>`);
+  const words=$$('#manifest .w');
+
+  // jornada
+  const jr=$$('#jr li');
+
+  // scroll
+  const story=$('#story');
+  const header=$('header'), bar=$('#bar'), sig=$('#sig'), sigImg=$('#sig img');
+  const onScroll=()=>{
+    const y=scrollY, h=document.documentElement.scrollHeight-innerHeight;
+    header.classList.toggle('solid',y>40);
+    bar.style.transform=`scaleX(${y/h})`;
+    const r=m.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.35)));
+    words.forEach((w,i)=>w.classList.toggle('on',i<p*words.length));
+    const jl=$('#jr').getBoundingClientRect(), jp=(innerHeight*.75-jl.top)/(jl.height*1.1);
+    jr.forEach((li,i)=>li.classList.toggle('act',i<=Math.floor(jp*jr.length)));
+    // faixas de cinema: fecham quando a história está no centro da tela
+    const st=story.getBoundingClientRect(), c=(st.top+st.height/2-innerHeight/2)/innerHeight;
+    story.style.setProperty('--lb',Math.max(0,1-Math.abs(c)*1.6)*Math.min(st.height*.13,96)+'px');
+    // assinatura: revela ao chegar no fim e sobe com leve parallax
+    const sr=sig.getBoundingClientRect();
+    if(sr.top<innerHeight*.9) sig.classList.add('in');
+    sigImg.style.setProperty('--sy',Math.min(40,Math.max(0,(sr.top-innerHeight+sr.height)*.12))+'px');
+  };
+  let ticking=false;
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{onScroll();ticking=false})}},{passive:true});
+  addEventListener('resize',onScroll,{passive:true}); onScroll();
+
+  // reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -40px'});
+  $$('.rv').forEach(el=>io.observe(el));
+
+  // brilho que segue o mouse nos cards
+  $$('.card').forEach(c=>c.addEventListener('pointermove',e=>{const b=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-b.left+'px');c.style.setProperty('--my',e.clientY-b.top+'px')}));
+
+  if(matchMedia('(hover:hover)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches){
+    // cursor
+    const cur=$('.cursor'); let cx=0,cy=0,tx=0,ty=0;
+    addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY});
+    (function loop(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop)})();
+    $$('a,button,.sv-item').forEach(el=>{el.addEventListener('pointerenter',()=>cur.classList.add('big'));el.addEventListener('pointerleave',()=>cur.classList.remove('big'))});
+    // botões magnéticos
+    $$('.mag').forEach(b=>{
+      b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`});
+      b.addEventListener('pointerleave',()=>b.style.transform='');
+    });
+    // parallax do 7
+    const s=$('.seven img');
+    addEventListener('pointermove',e=>{const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);s.style.transform=`perspective(800px) rotateY(${x*14}deg) rotateX(${-y*14}deg)`});
+  }
+})();
+</script>
+</body>
+</html>
